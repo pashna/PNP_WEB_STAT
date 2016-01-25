@@ -67,7 +67,7 @@ function get_data(res) {
 
 function get_days_ago(days) {
 	var today = new Date();
-	today.setDate(today.getDate() - 2);
+	today.setDate(today.getDate() - days);
 	var dd = today.getDate();
 	var mm = today.getMonth()+1; //January is 0!
 	var yyyy = today.getFullYear();
