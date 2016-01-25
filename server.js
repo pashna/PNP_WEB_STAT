@@ -33,8 +33,9 @@ function accept(req, res) {
 http.createServer(accept).listen(8181);
 
 function get_data(res) {
-	
-	mysql.query('select news_url, news_predicted, news_real from news where news_date > "' + get_days_ago(1) + '" order by news_url, news_predicted desc',
+	var query = 'select news_url, news_predicted, news_real from news where news_date > "' + get_days_ago(1) + ' 00:00"  order by news_url, news_predicted desc'
+	console.log(query);
+	mysql.query(query,
 	function(err, result, fields) {
 	    if (err) throw err;
 	    else {
