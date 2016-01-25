@@ -9,13 +9,15 @@
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.25.3/js/jquery.tablesorter.min.js"></script>
 		</head>
+		<script src="http://192.241.251.59:8080/js/search.js"></script>
+		
+		</script>
 	</head>
 	<body>
 
 	<div id="wrapper">
 	  <h1>PNP two days list</h1>
- 
-			<table id="keywords" cellspacing="0" cellpadding="0">
+			<table class="search-table" id="keywords" cellspacing="0" cellpadding="0">
 		    <thead>
 		      <tr>
 		        <th><span>URL</span></th>
@@ -27,7 +29,7 @@
 			  
 				{% for d in data %}
 					<tr>
-						<td><a href="{{d.news_url}}">{{d.link}}</a></td>
+						<td><a href="{{d.news_url}}" target="_blank">{{d.link}}</a></td>
 						<td>{{ d.news_real }}</td>
 						<td>{{ d.news_predicted }}</td>
 					</tr>
