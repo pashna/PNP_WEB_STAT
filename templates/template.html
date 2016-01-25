@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<head>
+		  <meta charset="utf-8">
+		  <meta http-equiv="Content-Type" content="text/html">
+		  <title>PNP two days list</title>
+		  <link href="http://192.241.251.59:8080/css/table.css" rel="stylesheet">
+		  <link rel="shortcut icon" href="http://vc.ru/static/main/img/favicon.ico">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.25.3/js/jquery.tablesorter.min.js"></script>
+		</head>
+	</head>
+	<body>
+
+	<div id="wrapper">
+	  <h1>PNP two days list</h1>
+ 
+			<table id="keywords" cellspacing="0" cellpadding="0">
+		    <thead>
+		      <tr>
+		        <th><span>URL</span></th>
+		        <th><span>REAL</span></th>
+		        <th><span>PREDICTED</span></th>
+		      </tr>
+		    </thead>
+			    <tbody>
+			  
+				{% for d in data %}
+					<tr>
+						<td><a href="{{d.news_url}}">{{d.link}}</a></td>
+						<td>{{ d.news_real }}</td>
+						<td>{{ d.news_predicted }}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+	</div>
+	<script src="http://192.241.251.59:8080/js/table.js"></script>
+	</body>
+</html>
