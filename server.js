@@ -33,7 +33,7 @@ function get_data(res) {
 	});
 	mysql.query('use ' + DATABASE);
 
-	var query = 'select news_url, news_predicted, news_real, news_date from news where news_date > "' + get_days_ago(1) + ' 00:00"  order by news_url, news_predicted desc'
+	var query = 'select news_url, news_predicted, news_real, news_date from news where news_date > "' + get_days_ago(1) + ' 00:00"  and news_real > 0 order by news_predicted desc'
 
 	mysql.query(query,
 	function(err, result, fields) {
