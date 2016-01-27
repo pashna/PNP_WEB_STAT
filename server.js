@@ -7,13 +7,6 @@ var MYSQL_PASS = "telegram312";
 var DATABASE = "telegram_db";
 var TABLE = 'news';
 
-var mysql = _mysql.createConnection({
-    host: HOST,
-    user: MYSQL_USER,
-    password: MYSQL_PASS,
-});
-mysql.query('use ' + DATABASE);
-
 var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
@@ -33,8 +26,15 @@ function accept(req, res) {
 http.createServer(accept).listen(8181);
 
 function get_data(res) {
-	var query = 'select news_url, news_predicted, news_real from news where news_date > "' + get_days_ago(1) + ' 00:00"  order by news_url, news_predicted desc'
-	console.log(query);
+	var mysql = _mysql.createConnection({
+	    host: HOST,
+	    user: MYSQL_USER,
+	    password: MYSQL_PASS,
+	});
+	mysql.query('use ' + DATABASE);
+
+	var query = 'select news_url, news_predicted, news_real, news_date from news where news_date > "' + get_days_ago(1) + ' 00:00"  order by news_url, news_predicted desc'
+
 	mysql.query(query,
 	function(err, result, fields) {
 	    if (err) throw err;
