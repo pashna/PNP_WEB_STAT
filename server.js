@@ -33,7 +33,8 @@ function get_data(res) {
 	});
 	mysql.query('use ' + DATABASE);
 
-	var query = 'select news_url, news_predicted, news_real, news_date from news where news_date > "' + get_days_ago(1) + ' 00:00"  and news_real > 0 order by news_predicted desc'
+	var query = 'select news_url, news_predicted, news_real, news_date from news where news_date > "' + get_days_ago(1) + ' 00:00"  and news_real > 0 order by news_predicted desc';
+	console.log(query);
 
 	mysql.query(query,
 	function(err, result, fields) {
@@ -54,7 +55,7 @@ function get_data(res) {
 	        }
 	    }
 	    
-	    var text = swig.renderFile('templates/template.html', {
+	    var text = swig.renderFile('/PNP_WEB_STAT/templates/template.html', {
 		  data: result_array
 		});
 		res.write(text);
